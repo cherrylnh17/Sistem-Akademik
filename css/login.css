@@ -5,12 +5,14 @@ body{
 }
 
 
-.container-fluid{
- 
+.login{
     min-height: 100dvh;
     display: flex;
-    place-content:center;   
+    align-items:center;
+    justify-content:center;
+    background:cyan;
 }
+
 .container-login{
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         border-radius: 1em;
