@@ -1,0 +1,65 @@
+body{
+    background: url('../img/bg-login.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.container-login{
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        border-radius: 1em;
+}
+
+/* Baris pembatas */
+
+.vertikal-row{
+    height: 50dvh;
+}
+
+.vertikal-row-detail{
+    width: 1px;
+    height: 100%;
+    background: #979393;
+}
+
+/* Bagian footer login */
+
+.footer-login-users a{
+    color: rgb(4, 0, 255);
+    text-decoration: none;
+}
+
+.footer-login-users a:hover{
+    text-decoration: underline;
+}
+
+/* Bagian Article Login */
+
+.article-login{
+    font-family: roboto, sans-serif;
+}
+
+.domain{
+    font-weight: bold;
+}
+
+.question-article{
+    cursor: pointer;
+}
+
+
+/* Bagian show hide password */
+.show-hide-password{
+    cursor: pointer;
+}
+
+
+/* Tampilkan form login saat pertama */
+#formLoginUsers {
+    display: block;
+}
+
+/* Sembunyikan form lupa sandi */
+#formResetPassword {
+    display: none;
+}
