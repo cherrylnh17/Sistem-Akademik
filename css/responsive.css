@@ -10,11 +10,6 @@
         margin-left: 0;
     }
 
-    .search-mahasiswa form input,
-    .search-mahasiswa form button,
-    .add-mahasiswa a{
-        font-size: 12px !important;
-    }
 
     .page-link{
         font-size: 12px;
@@ -23,13 +18,17 @@
 
     .container-login{
         width: 100%;
-        max-width: 450px;
+        max-width: 400px;
     }
 
+    .btn-responsive {
+      padding: 0.25rem 0.5rem; 
+      font-size: 12px;        
+    }
 
 }
 
-@media screen and (min-width: 720){
+@media screen and (min-width: 720px){
     body {
         font-size: 14px !important;
     }
@@ -38,11 +37,13 @@
         font-size: 14px;
     }
 
-    .search-mahasiswa form input,
-    .search-mahasiswa form button,
-    .add-mahasiswa a{
-        font-size: 14px !important;
+
+    
+    .btn-responsive {
+      padding: 0.3rem .75rem; 
+      font-size: 14px;        
     }
+
 
 }
 
@@ -59,12 +60,6 @@
         margin-left: 20%;
     }
 
-    .search-mahasiswa form input,
-    .search-mahasiswa form button,
-    .add-mahasiswa a{
-        font-size: 16px !important;
-    }
-
     
     .page-link{
         font-size: 16px;
@@ -76,4 +71,10 @@
     }
 
     
+    .btn-responsive {
+      padding: 0.3rem .75rem; 
+      font-size: 16px;        
+    }
+
+
 }

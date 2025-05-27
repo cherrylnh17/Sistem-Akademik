@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const password = document.getElementById('password').value;
 
         if(email === emailUser && password === passwordUser){
-            window.location.href = 'dashboard/index.html';
+            window.location.href = 'dashboard/dashboard.html';
         } else {
             alert("Email atau Password salah!");
         }
