@@ -1,0 +1,119 @@
+<?php 
+session_start();
+require_once '../koneksi/koneksi.php';
+
+if(!isset($_SESSION['username'])){
+    header("Location: ../index.php");
+    exit;
+}
+
+$dosen = $conn->query("SELECT COUNT(*) as total FROM dosen")->fetch_assoc();
+
+$mahasiswa = $conn->query("SELECT COUNT(*) as total FROM mahasiswa")->fetch_assoc();
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Portal Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <section class="contain" id="contain">
+        <div class="wrap" id="wrap">
+            <div class="navbar-lg d-flex flex-column">
+                <div class="admin-logo d-flex align-items-center">
+                    <img src="../img/logo.png" alt="" width="50px">
+                    <span>Admin Panel</span>
+                </div>
+                <div class="navigation list-group gap-2 mt-2 px-4 d-flex">
+                    <a href="#" class="navigation underline active-canvas"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="../mahasiswa/mahasiswa.php" class="navigation underline"><i class="fas fa-users"></i> Mahasiswa</a>
+                    <a href="../dosen/dosen.php" class="navigation underline"><i class="fas fa-box-open"></i> Dosen</a>
+                    <a href="../matkul/matkul.php" class="navigation underline"><i class="fas fa-file-alt"></i> Mata Kuliah</a>
+                    <a href="../laporan/laporan.php" class="navigation underline"><i class="fas fa-cog "></i> Laporan</a>
+                    <a href="../owner/owner.php" class="navigation underline"><i class="fa-solid fa-copyright"></i> Owner</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content" id="content">
+            <nav class="navbar navbar-expand-lg nav-header ">
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="hamburger mx-4 d-lg-block d-none" id="sidebar">
+                        <i class="fas fa-bars"></i>
+                        <span class="mx-4 fs-5">Administrasi</span>
+                    </div>
+                    <div class="hamburger d-lg-none d-block" data-bs-toggle="offcanvas" data-bs-target="#canvasHamburgerMenu" aria-controls="canvasHamburgerMenu">
+                        <span class="mx-2 fs-5"><i class="fas fa-bars me-2"></i> Administrasi</span>
+                    </div>
+                    <a href="../destroy.php" class="text-white text-decoration-none">Logout</a>
+                </div>
+            </nav>
+            <section class="main-content">
+                <div class="header-main mt-5">
+                    <span class="text-white h3 typing-teks">Selamat Datang, Admin!</span>
+                </div>
+                <div class="absolute-bg " id="absolutebg"></div>
+                <div class="content-main-dashboard row mt-3 mt-lg-5 m-0 gap-3">
+                    <div class="dosen p-5 col-5 d-flex flex-column">
+                        <span>Total Dosen</span>
+                        <span><?= $dosen['total'] ?></span>
+                    </div>
+                    <div class="mahasiswa p-5 col-5 d-flex flex-column">
+                        <span>Total Mahasiswa</span>
+                        <span><?= $mahasiswa['total'] ?></span>
+                    </div>
+                    <div class="mata-kuliah p-5 col-5 d-flex flex-column">
+                        <span>Total Matkul</span>
+                        <span>0</span>
+                    </div>
+                    <div class="laporan p-5 col-5 d-flex flex-column">
+                        <span>Total Laporan</span>
+                        <span>0</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+   
+
+    <!-- Bagian Canvas Hamburger -->
+
+    <div class="offcanvas offcanvas-start w-75 canvas-body" data-bs-scroll="true" tabindex="-1" id="canvasHamburgerMenu" aria-labelledby="offcacanvasHamburgerMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+                <div class="admin-logo-md d-flex align-items-center">
+                <img src="../img/logo.png" alt="" width="40px">
+                <span class="small text-white">Admin Panel</span>
+            </div>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="list-group gap-2 mt-2 px-4">
+                <a href="#" class="navigation-md underline-md active-canvas"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="../mahasiswa/mahasiswa.php" class="navigation-md underline-md"><i class="fas fa-users"></i> Mahasiswa</a>
+                <a href="../dosen/dosen.php" class="navigation-md underline-md"><i class="fas fa-box-open"></i> Dosen</a>
+                <a href="../matkul/matkul.php" class="navigation-md underline-md"><i class="fas fa-file-alt"></i> Mata Kuliah</a>
+                <a href="../laporan/laporan.php" class="navigation-md underline-md"><i class="fas fa-cog "></i> Laporan</a>
+                <a href="../owner/owner.php" class="navigation-md underline-md"><i class="fa-solid fa-copyright"></i> Owner</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<?php 
+session_start();
+require_once 'koneksi/koneksi.php';
+
+
+$errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
+unset($_SESSION['errors']);
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portal Website</title>
+    <link rel="shortcut icon" href="img/icon.png" type="images/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    
+    <section class="login mt-3 mt-lg-5">
+        <div class="container-fluid p-lg-5 m-0">
+            <div class="container container-login bg-white">
+                <div class="detail-login p-lg-5 row gap-3">
+
+                    <div class="form-login pt-5 px-5 p-lg-0 col-lg-5" id="formLoginUsers">
+                        <div class="img-login d-flex justify-content-center">
+                            <img src="img/umku-icon.webp" class="w-100 img-fluid" alt="">
+                        </div>
+                        <?php if (isset($errors['alert'])): ?>
+                            <div class="alert alert-info" role="alert">
+                                <?= $errors['alert'] ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="login-users mt-2">
+                            <form action="verifLogin.php" method="POST">
+                                <input type="email" name="email_login" id="email" class="form-control mb-3" placeholder="Masukkan Email" required>
+                                <div class="input-group mb-2">
+                                    <input type="password" name="password_login" id="password" class="form-control" placeholder="Masukkan Password" id="password" required>
+                                    <span class="input-group-text show-hide-password" onclick="showHidePassword()">
+                                        <span class="show"><i class="fa-solid fa-eye" id="showPassword"></i></span>
+                                    </span>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mb-2">Masuk</button>
+                            </form>
+                            <div class="footer-login-users d-flex justify-content-end mb-4">
+                                <a href="#" class="small" id="switchDiv2">Daftar?</a>
+                                <!-- Tambahan jika mau ada fitur daftar -->
+                                <!-- <a href="" class="small">Daftar Sekarang</a> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-forget-password pt-5 px-5 p-lg-0 col-lg-5" id="formResetPassword">
+                        <div class="img-login d-flex justify-content-center">
+                            <img src="img/umku-icon.webp" class="w-100 img-fluid" alt="">
+                        </div>
+                        <div class="forget-users mt-2">
+                            <form action="prosesRegist.php" method="POST">
+                                <input type="text" name="username_regist" id="username" class="form-control mb-1" placeholder="Masukkan Username" required>
+                                <input type="email" name="email_regist" id="email" class="form-control mb-1" placeholder="Masukkan Email" required>
+                                <input type="password" name="password_regist" id="password" class="form-control mb-1" placeholder="Masukkan Password" id="password" required>
+                                <div class="form-check mb-1 fs-6">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="ketentuan">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Saya menyetujui ketentuan dan layanan
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mb-2">Daftar</button>
+                            </form>
+                            <div class="footer-login-users d-flex justify-content-end mb-4">
+                                <a href="#" class="small" id="switchDiv1">Login?</a>
+                                <!-- Tambahan jika mau ada fitur daftar -->
+                                <!-- <a href="" class="small">Daftar Sekarang</a> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+<!-- end Form -->
+                    <div class="vertikal-row col-lg-1 d-lg-flex d-none justify-content-center">
+                        <div class="vertikal-row-detail"></div>
+                    </div>
+
+                    <div class="article-login col-lg-5 px-5 px-lg-0">
+                        <div class="detail-article py-lg-3 text-center">
+                            <div class="header-article fw-bold">
+                                <span>اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَا تُهُ</span>
+                            </div>
+                            <div class="main-article mt-3 px-4 px-lg-0 pb-3 pb-lg-0">
+                                <span class="small">Selamat datang di sistem login portal akademik, silahkan melakukan login terlebih dahulu sebelum menuju ke portal akademik. Domain <span class="domain">@dosen.ac.id</span> untuk dosen, <span class="domain">@mahasiswa.ac.id</span> untuk mahasiswa, dan <span class="domain">@admin.ac.id</span> untuk admin</span>
+                            </div>
+                            <div class="question-article d-flex align-items-center small justify-content-center text-primary mt-lg-3 mb-3 mb-lg-0"  data-bs-toggle="modal" data-bs-target="#modal-question">
+                                <span><i class="fa-solid fa-circle-question"></i> Cara daftar akun?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Bagian modal Question -->
+     <div class="modal fade" id="modal-question" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <span>Cara melakukan Registrasi Akun</span>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   <ol>
+                        <li>Menghubungi admin untuk melakukan pendaftaran email</li>
+                        <li>Admin akan memberikan email dan user melakukan login dengan email tersebut</li>
+                        <li>User melakukan login dengan email dan password yang telah dibuatkan admin</li>
+                        <li>User diharapkan langsung mengganti sandinya saat itu juga</li>
+                   </ol>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
