@@ -30,19 +30,19 @@ graphql
 Salin
 Edit
 Sistem-Akademik/
-├── koneksi/           # File koneksi database
-├── mahasiswa/         # CRUD data mahasiswa
-├── dosen/             # CRUD data dosen
-├── matkul/            # CRUD data mata kuliah
-├── laporan/           # Folder laporan/transkrip
-├── dashboard/         # Halaman dashboard umum
-├── index.php          # Halaman utama
-├── prosesRegist.php   # Proses registrasi pengguna
-├── verifLogin.php     # Proses autentikasi pengguna
-├── destroy.php        # Logout / penghapusan sesi
-├── uts.sql            # Skrip SQL untuk setup database
-├── .gitignore
-├── css/, js/, img/    # Aset frontend
+├── koneksi/           # File koneksi database<br>
+├── mahasiswa/         # CRUD data mahasiswa<br>
+├── dosen/             # CRUD data dosen<br>
+├── matkul/            # CRUD data mata kuliah<br>
+├── laporan/           # Folder laporan/transkrip<br>
+├── dashboard/         # Halaman dashboard umum<br>
+├── index.php          # Halaman utama<br>
+├── prosesRegist.php   # Proses registrasi pengguna<br>
+├── verifLogin.php     # Proses autentikasi pengguna<br>
+├── destroy.php        # Logout / penghapusan sesi<br>
+├── uts.sql            # Skrip SQL untuk setup database<br>
+├── .gitignore<br>
+├── css/, js/, img/    # Aset frontend<br>
 Cara Penggunaan
 Buka aplikasi di browser.
 
