@@ -25,11 +25,7 @@ Sesuaikan konfigurasi koneksi database di file koneksi/koneksi.php.
 
 Jalankan aplikasi dengan meletakkannya di web server lokal (misalnya XAMPP, MAMP, Laragon), kemudian akses http://localhost/Sistem-Akademik/.
 
-Struktur Projek (highlight)
-graphql
-Salin
-Edit
-Sistem-Akademik/<br>
+Struktur Projek (highlight) Sistem-Akademik/<br>
 ├── koneksi/           # File koneksi database<br>
 ├── mahasiswa/         # CRUD data mahasiswa<br>
 ├── dosen/             # CRUD data dosen<br>
